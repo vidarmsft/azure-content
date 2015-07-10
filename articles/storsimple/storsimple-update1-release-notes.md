@@ -12,7 +12,7 @@
     ms.topic="article"
     ms.tgt_pltfrm="NA"
     ms.workload="TBD"
-    ms.date="06/29/2015"
+    ms.date="07/10/2015"
     ms.author="v-sharos" />
 
 # StorSimple 8000 Series Update 1 release notes  
@@ -23,7 +23,7 @@ The following release notes describe the new features and identify the critical 
 
 This update changes the device software to be StorSimple 8000 Series Update 1. Please review the information contained in the release notes before you deploy the update in your StorSimple solution. For more information, see how to [install Update 1 on your StorSimple device](storsimple-install-update-1.md). 
 
-Please review the information contained in the release notes before you deploy the updates in your StorSimple solution.  
+Please review the information contained in the release notes before you deploy the updates in your StorSimple solution.   
 
 >[AZURE.IMPORTANT]
 > 
