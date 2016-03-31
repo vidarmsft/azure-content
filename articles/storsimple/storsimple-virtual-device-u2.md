@@ -17,10 +17,6 @@
 
 # Deploy and manage a StorSimple virtual device in Azure (Update 2)
 
-> [AZURE.SELECTOR]
-- [Update 2](../articles/storsimple/storsimple-virtual-device-u2.md)
-- [Update 1](../articles/storsimple/storsimple-virtual-device-u1.md)
-- [GA Release](../articles/storsimple/storsimple-virtual-device.md)
 
 ##Overview
 The StorSimple virtual device is an additional capability that comes with your Microsoft Azure StorSimple solution. The StorSimple virtual device runs on a virtual machine in a Microsoft Azure virtual network, and you can use it to back up and clone data from your hosts. 
@@ -34,7 +30,7 @@ The StorSimple virtual device is available in two models, a standard 8010 (forme
 | Device model          | 8010<sup>1</sup>                                                                     | 8020                                                                                                                               |
 |-----------------------|---------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------|
 | **Maximum capacity**      | 30 TB                                                                     | 64 TB                                                                                                                                |
-| **Azure VM**              | Standard_A3 (4 cores, 7 GB memory)                                                                      | Standard_DS3 (4 cores, 14 GB memory)                                                                                                                          |
+| **Azure VM**              | Standard_A3 (4 cores, 7 GB memory) with 4*1TB standard Azure disks                                                                      | Standard_DS3 (4 cores, 14 GB memory) with 4*1TB SSD disks                                                                                                                          |
 | **Version compatibility** | Versions running pre-Update 2 or later                                             | Versions running Update 2 or later                                                                                                  |
 | **Region availability**   | All Azure regions                                                         | Azure regions that support Premium Storage<br></br>For a list of regions, see [supported regions for 8020](#supported-regions-for-8020) |
 | **Storage type**          | Uses Azure Standard Storage<br></br> Learn how to [create a Standard Storage account]() | Uses Azure Premium Storage<br></br>Learn how to [create a Premium Storage account](storage-premium-storage.md#create-and-use-a-premium-storage-account-for-a-virtual-machine-data-disk)                                                               |
@@ -153,32 +149,32 @@ Perform the following steps to configure and register your StorSimple virtual de
 
 The following section describes the device configuration settings needed for the StorSimple virtual device if you want to use CHAP, StorSimple Snapshot Manager or change the Device Administrator password.
 
-#### Configure the CHAP initiator
+#### Configure the CHAP initiator (optional)
 
 This parameter contains the credentials that your virtual device (target) expects from the initiators (servers) that are attempting to access the volumes. The initiators will provide a CHAP user name and a CHAP password to identify themselves to your device during this authentication. For detailed steps, go to [Configure CHAP for your device](storsimple-configure-chap.md#unidirectional-or-one-way-authentication).
 
-#### Configure the CHAP target
+#### Configure the CHAP target (optional)
 
 This parameter contains the credentials that your virtual device uses when a CHAP-enabled initiator requests mutual or bi-directional authentication. Your virtual device will use a Reverse CHAP user name and Reverse CHAP password to identify itself to the initiator during this authentication process. Note that CHAP target settings are global settings. When these are applied, all the volumes connected to the storage virtual device will use CHAP authentication. For detailed steps, go to [Configure CHAP for your device](storsimple-configure-chap.md#bidirectional-or-mutual-authentication).
 
-#### Configure the StorSimple Snapshot Manager password
+#### Change the StorSimple Snapshot Manager password
 
 StorSimple Snapshot Manager software resides on your Windows host and allows administrators to manage backups of your StorSimple device in the form of local and cloud snapshots.
 
 >[AZURE.NOTE] For the virtual device, your Windows host is an Azure virtual machine.
 
-When configuring a device in the StorSimple Snapshot Manager, you will be prompted to provide the StorSimple device IP address and password to authenticate your storage device. For detailed steps, go to [Configure StorSimple Snapshot Manager password](storsimple-change-passwords.md#change-the-storsimple-snapshot-manager-password).
+When configuring a device in the StorSimple Snapshot Manager, you will be prompted to provide the StorSimple device IP address and password to authenticate your storage device. For detailed steps, go to [Change StorSimple Snapshot Manager password](storsimple-change-passwords.md#change-the-storsimple-snapshot-manager-password).
 
 #### Change the device administrator password 
 
 When you use the Windows PowerShell interface to access the virtual device, you will be required to enter a device administrator password. For the security of your data, you are required to change this password before the virtual device can be used. For detailed steps, go to [Configure device administrator password](storsimple-change-passwords.md#change-the-device-administrator-password).
 
 ## Connect remotely to the virtual device
-Remote access to your virtual device via the Windows PowerShell interface is not enabled by default. You need to enable remote management on the virtual device first, and then enable it on the client that will be used to access your virtual device.
+Most management operations can be performed from the portal and do not need shell access. In cases where you do, you need to explicitly enable remote management on the virtual device first, and then enable it on the client that will be used to access your virtual device.
 
 The two-step process to connect remotely is detailed below.
 
-### Step 1: Configure remote management
+### Step 1: Configure remote management 
 
 Perform the following steps to configure remote management for your StorSimple virtual device.
 
