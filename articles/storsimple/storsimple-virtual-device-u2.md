@@ -2,6 +2,7 @@
    pageTitle="StorSimple virtual device Update 2| Microsoft Azure"
    description="Learn how to create, deploy, and manage a StorSimple virtual device in a Microsoft Azure virtual network. (Applies to StorSimple Update 2)."
    services="storsimple"
+   
    documentationCenter=""
    authors="alkohli"
    manager="carmonm"
@@ -12,7 +13,7 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="02/12/2016"
+   ms.date="04/19/2016"
    ms.author="alkohli" />
 
 # Deploy and manage a StorSimple virtual device in Azure (Update 2)
@@ -30,13 +31,14 @@ The StorSimple virtual device is available in two models, a standard 8010 (forme
 | Device model          | 8010<sup>1</sup>                                                                     | 8020                                                                                                                               |
 |-----------------------|---------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------|
 | **Maximum capacity**      | 30 TB                                                                     | 64 TB                                                                                                                                |
-| **Azure VM**              | Standard_A3 (4 cores, 7 GB memory) with 4*1TB standard Azure disks                                                                      | Standard_DS3 (4 cores, 14 GB memory) with 4*1TB SSD disks                                                                                                                          |
+| **Azure VM**              | Standard_A3 (4 cores, 7 GB memory) with 4*1 TB standard Azure disks                                                                      | Standard_DS3 (4 cores, 14 GB memory) with 4*1 TB SSD disks                                                                                                                          |
 | **Version compatibility** | Versions running pre-Update 2 or later                                             | Versions running Update 2 or later                                                                                                  |
 | **Region availability**   | All Azure regions                                                         | Azure regions that support Premium Storage<br></br>For a list of regions, see [supported regions for 8020](#supported-regions-for-8020) |
-| **Storage type**          | Uses Azure Standard Storage<br></br> Learn how to [create a Standard Storage account]() | Uses Azure Premium Storage<br></br>Learn how to [create a Premium Storage account](storage-premium-storage.md#create-and-use-a-premium-storage-account-for-a-virtual-machine-data-disk)                                                               |
+| **Storage type**          | Uses Azure Standard Storage for local tier<br></br> Learn how to [create a Standard Storage account]() | Uses Azure Premium Storage for local tier<sup>2</sup><br></br>Learn how to [create a Premium Storage account](storage-premium-storage.md#create-and-use-a-premium-storage-account-for-a-virtual-machine-data-disk)                                                               |
 | **Workload guidance**     | Item level retrieval of files from backups                                              | Cloud dev and test scenarios, low latency, higher performance workloads <br></br>Secondary device for disaster recovery                                                                                            |
  
 <sup>1</sup> *Formerly known as the 1100*.
+<sup>2</sup> *Both the 8010 and 8020 use Azure Standard Storage for the cloud tier. The difference only exists in the local tier within the device*.
 
 #### Supported regions for 8020
 
